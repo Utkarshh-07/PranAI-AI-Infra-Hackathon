@@ -1,0 +1,1 @@
+export '../../prana/lib/screens/parent_contact_screen.dart';

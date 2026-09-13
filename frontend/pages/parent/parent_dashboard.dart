@@ -1,0 +1,1 @@
+export '../../../../prana/lib/screens/parent/parent_dashboard.dart';

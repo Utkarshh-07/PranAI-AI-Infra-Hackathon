@@ -1,0 +1,1 @@
+export '../../../../prana/lib/widgets/dashboard_widgets/maitri_tip_card.dart';

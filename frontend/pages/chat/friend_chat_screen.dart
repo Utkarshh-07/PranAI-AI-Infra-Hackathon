@@ -1,0 +1,1 @@
+export '../../../../prana/lib/screens/chat/friend_chat_screen.dart';

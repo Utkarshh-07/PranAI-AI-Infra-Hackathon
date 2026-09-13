@@ -1,0 +1,1 @@
+export '../../prana/lib/screens/student_dashboard.dart';

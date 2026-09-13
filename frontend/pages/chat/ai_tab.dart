@@ -1,0 +1,1 @@
+export '../../../../prana/lib/screens/chat/ai_tab.dart';

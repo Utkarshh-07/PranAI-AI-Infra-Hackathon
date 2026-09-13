@@ -1,0 +1,1 @@
+export '../../prana/lib/widgets/animated_character.dart';

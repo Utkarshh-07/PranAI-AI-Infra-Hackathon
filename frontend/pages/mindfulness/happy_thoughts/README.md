@@ -1,0 +1,1 @@
+The original `prana/lib/screens/mindfulness/happy_thoughts` directory contains multiple files that should be migrated when the feature is being refactored. Keep the original folder in place until imports are updated.

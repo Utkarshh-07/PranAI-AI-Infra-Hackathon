@@ -1,0 +1,89 @@
+name: prana
+description: Power Nap App - AI Mental Wellness
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Audio & Video
+  just_audio: ^0.9.35
+  audio_session: ^0.1.10
+  video_player: ^2.8.2
+  flutter_tts: ^4.2.5
+  speech_to_text: ^7.0.0
+  record: ^5.1.2
+  web_socket_channel: ^2.4.0
+  
+  
+  # Firebase (Compatible set - Version 3.x works well)
+  firebase_core: ^3.8.0
+  firebase_auth: ^5.3.0
+  cloud_firestore: ^5.4.0
+  
+  # Notifications
+  firebase_messaging: ^15.1.0
+  flutter_local_notifications: ^17.2.0
+  
+  # UI & Animation
+  cupertino_icons: ^1.0.2
+  shimmer: ^3.0.0
+  
+  # Utilities
+  intl: ^0.20.2
+  path_provider: ^2.1.0
+  provider: ^6.1.5+1
+  http: ^1.6.0
+  shared_preferences: ^2.3.3
+  
+  # Calendar & Scheduling
+  table_calendar: ^3.0.0
+  
+  # UUID for unique IDs
+  uuid: ^4.0.0
+  
+  # QR and Scanning (for friend features)
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^5.2.0
+  image_picker: ^1.1.2
+  share_plus: ^10.0.0
+  cached_network_image: ^3.4.0
+  tab_indicator_styler: ^2.0.0
+  flutter_staggered_animations: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  
+  fonts:
+    - family: NotoColorEmoji
+      fonts:
+        - asset: assets/fonts/NotoColorEmoji-Regular.ttf
+  
+  assets:
+    # Audio files
+    - assets/audio/rain.wav
+    - assets/audio/bell1.wav
+    - assets/audio/bell2.wav
+    
+    # Video backgrounds
+    - assets/videos/morning_beach.mp4
+    - assets/videos/midday_beach.mp4
+    - assets/videos/evening_beach.mp4
+    - assets/videos/night_beach.mp4
+    
+    # Textures
+    - assets/images/beach_textures/sand_base.jpg
+    - assets/images/beach_textures/sand_normal.jpg
+    
+    # AI Character assets
+    - assets/characters/
+    - assets/characters/female_psychologist.png
+    - assets/characters/male_mentor.png

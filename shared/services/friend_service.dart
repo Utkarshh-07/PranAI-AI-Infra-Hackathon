@@ -1,0 +1,1 @@
+export '../../prana/lib/services/friend_service.dart';

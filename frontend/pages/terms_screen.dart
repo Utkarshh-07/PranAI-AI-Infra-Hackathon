@@ -1,0 +1,1 @@
+export '../../prana/lib/screens/terms_screen.dart';

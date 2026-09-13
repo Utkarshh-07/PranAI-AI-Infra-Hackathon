@@ -1,0 +1,1 @@
+export '../../../../prana/lib/screens/profile/group_profile_screen.dart';

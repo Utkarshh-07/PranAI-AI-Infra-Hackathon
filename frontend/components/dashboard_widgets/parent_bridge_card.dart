@@ -1,0 +1,1 @@
+export '../../../../prana/lib/widgets/dashboard_widgets/parent_bridge_card.dart';

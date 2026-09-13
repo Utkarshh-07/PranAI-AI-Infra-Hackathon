@@ -1,0 +1,1 @@
+export '../../prana/lib/screens/test_firebase_screen.dart';

@@ -1,0 +1,1 @@
+export '../../prana/lib/services/chat_service.dart';
