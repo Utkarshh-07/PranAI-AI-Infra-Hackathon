@@ -15,12 +15,14 @@ class AssemblySttService {
   bool _isListening = false;
   bool get isListening => _isListening;
 
-  /// Fired once per spoken turn, with the finalized text.
+  // AssemblyAI requires 50–1000ms of audio per message.
+  // At 16kHz mono PCM16: 16000 samples/sec × 2 bytes = 32000 bytes/sec.
+  // 3200 bytes = 100ms — comfortably inside the valid range.
+  static const int _chunkBytes = 3200;
+  final BytesBuilder _audioBuffer = BytesBuilder();
+
   Function(String finalText)? onFinalTranscript;
-
-  /// Fired repeatedly while the user is still speaking (live captions).
   Function(String partialText)? onPartialTranscript;
-
   Function(String error)? onError;
 
   Future<void> startListening() async {
@@ -47,6 +49,7 @@ class AssemblySttService {
     }
 
     _isListening = true;
+    _audioBuffer.clear();
 
     _socketSub = _channel!.stream.listen(
       (message) {
@@ -88,8 +91,21 @@ class AssemblySttService {
     );
 
     _audioSub = audioStream.listen((chunk) {
-      if (_isListening && _channel != null) {
-        _channel!.sink.add(chunk);
+      if (!_isListening || _channel == null) return;
+
+      // Buffer incoming audio, then emit fixed-size chunks that
+      // satisfy AssemblyAI's 50–1000ms duration requirement.
+      _audioBuffer.add(chunk);
+
+      while (_audioBuffer.length >= _chunkBytes) {
+        final buffered = _audioBuffer.takeBytes();
+        final toSend = Uint8List.sublistView(buffered, 0, _chunkBytes);
+        _channel!.sink.add(toSend);
+
+        // Keep whatever is left over for the next round.
+        if (buffered.length > _chunkBytes) {
+          _audioBuffer.add(Uint8List.sublistView(buffered, _chunkBytes));
+        }
       }
     });
   }
@@ -101,6 +117,7 @@ class AssemblySttService {
     await _audioSub?.cancel();
     _audioSub = null;
     await _recorder.stop();
+    _audioBuffer.clear();
 
     await _socketSub?.cancel();
     _socketSub = null;
